@@ -1,0 +1,13 @@
+{
+  "StartUp": {
+    "next": ["Sub_Start_miYouShe"]
+  },
+  "Sub_Start_miYouShe": {
+    "is_sub": true,
+    "action": "StartApp",
+    "package": "com.mihoyo.hyperion/.ui.SchemaActivity"
+  },
+  "Getting_Reward":{
+    "recognition":""
+  }
+}
