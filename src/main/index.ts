@@ -1,10 +1,10 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, dialog } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import { testMaa } from './MaaFw/init'
 
-function createWindow(): void {
+function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 900,
@@ -17,7 +17,7 @@ function createWindow(): void {
       sandbox: false
     }
   })
-
+  const mainWindowMessage = (msg: string) => mainWindow.webContents.send('message-alerts', msg)
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
   })
@@ -34,6 +34,7 @@ function createWindow(): void {
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
+  return { mainWindowMessage }
 }
 
 // This method will be called when Electron has finished
@@ -50,15 +51,29 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
+  const { mainWindowMessage } = createWindow()
+
   // IPC test
-  ipcMain.on('ping', () => console.log('pong'))
+  ipcMain.on('ping', () => {
+    console.log('pong')
+    mainWindowMessage('start pong')
+  })
   ipcMain.on('start', () => {
-    console.error('start')
-    console.log(app.getPath('appData'), app.getName())
+    dialog.showErrorBox('startMaaIPC', 'start !!!!')
     testMaa()
   })
+  ipcMain.handle('test', async (_event, data) => {
+    switch (JSON.parse(data).type) {
+      case 'test1':
+        dialog.showErrorBox('testIPC', 'type:test1')
+        mainWindowMessage('start test1')
+        return 'OK'
+      default:
+        return 'FALSE'
+    }
+  })
 
-  createWindow()
+  // createWindow()
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the

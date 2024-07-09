@@ -1,4 +1,5 @@
 import * as maa from '@nekosu/maa-node'
+import { dialog } from 'electron'
 
 export const testMaa = async () => {
   console.log(maa.version())
@@ -9,15 +10,6 @@ export const testMaa = async () => {
     console.log('not find adb')
     return
   }
-  // if (devices.length === 0) {
-  //   devices[0] = {
-  //     name: 'C:/Users/luoji/AppData/Local/Android/Sdk/platform-tools/adb.exe',
-  //     adb_path: 'C:/Users/luoji/AppData/Local/Android/Sdk/platform-tools/adb.exe',
-  //     adb_serial: '127.0.0.1:16384',
-  //     adb_controller_type: 16645886,
-  //     adb_config: '{}'
-  //   }
-  // }
   console.log(devices)
   // 使用第一个设备创建控制器
   const ctrl = new maa.AdbController(devices[0])
@@ -47,10 +39,10 @@ export const testMaa = async () => {
 
   // 检查是否正确创建
   console.log(inst.inited ? 'successful create maafw' : 'fail !!!!!!')
-
+  dialog.showErrorBox('FW inst', inst.inited ? 'successful create maafw' : 'fail !!!!!!')
   // 执行任务, Task1来自pipeline/Task.json
-  // await inst.post_task('Task1').wait()
-  // await inst.post_task('StartUp').wait()
-  // await inst.post_task('Get_ZZZ1').wait()
+  await inst.post_task('Task1').wait()
+  await inst.post_task('StartUp').wait()
+  await inst.post_task('Get_ZZZ1').wait()
   await inst.post_task('StopApp').wait()
 }
