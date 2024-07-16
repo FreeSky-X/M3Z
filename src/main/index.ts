@@ -3,6 +3,7 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import { testMaa } from './MaaFw/init'
+import * as maa from '@nekosu/maa-node'
 
 function createWindow() {
   // Create the browser window.
@@ -40,7 +41,7 @@ function createWindow() {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.whenReady().then(() => {
+app.whenReady().then(async () => {
   // Set app user model id for windows
   electronApp.setAppUserModelId('com.electron')
 
@@ -52,6 +53,7 @@ app.whenReady().then(() => {
   })
 
   const { mainWindowMessage } = createWindow()
+  let Instance: maa.Instance | undefined = undefined
 
   // IPC test
   ipcMain.on('ping', () => {
@@ -60,14 +62,49 @@ app.whenReady().then(() => {
   })
   ipcMain.on('start', () => {
     dialog.showErrorBox('startMaaIPC', 'start !!!!')
-    testMaa()
+    // testMaa()
+  })
+  ipcMain.on('initMaaFw', async () => {
+    if (Instance != undefined) {
+      return
+    }
+    const result = await testMaa(mainWindowMessage)
+    if (result !== undefined) {
+      Instance = result
+    }
   })
   ipcMain.handle('test', async (_event, data) => {
-    switch (JSON.parse(data).type) {
+    if (Instance === undefined) {
+      return
+    }
+    const taskName = JSON.parse(data).type
+    switch (taskName) {
       case 'test1':
-        dialog.showErrorBox('testIPC', 'type:test1')
+        // dialog.showErrorBox('testIPC', 'type:test1')
         mainWindowMessage('start test1')
         return 'OK'
+      case 'test2': {
+        mainWindowMessage(`start ${taskName}`)
+        const b = await Instance.post_task('Task1').wait()
+        console.log(b)
+        if (b == 3000) {
+          mainWindowMessage(`Completed: ${taskName}`)
+        } else {
+          mainWindowMessage(`Fail: ${taskName}`)
+        }
+        return 'ok'
+      }
+      case 'startzzz': {
+        mainWindowMessage(`start ${taskName}`)
+        const b = await Instance.post_task('StartUp_ZZZ').wait()
+        console.log(b)
+        if (b == 3000) {
+          mainWindowMessage(`Completed: ${taskName}`)
+        } else {
+          mainWindowMessage(`Fail: ${taskName}`)
+        }
+        return 'ok'
+      }
       default:
         return 'FALSE'
     }

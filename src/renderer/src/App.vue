@@ -2,6 +2,10 @@
 import { ref } from 'vue'
 import Versions from './components/Versions.vue'
 
+import MainPage from '@renderer/view/MainPage.vue'
+import { NConfigProvider } from 'naive-ui'
+import hljs from 'highlight.js'
+
 const ipcHandle = () => window.electron.ipcRenderer.send('ping')
 const ipcB = () => window.electron.ipcRenderer.send('start')
 const ipcMessage = () =>
@@ -15,7 +19,11 @@ window.api.OnMessageAlerts((value) => {
 </script>
 
 <template>
-  <img alt="logo" class="logo" src="./assets/electron.svg" />
+  <NConfigProvider :hljs="hljs">
+    <MainPage class="home" />
+  </NConfigProvider>
+
+  <!-- <img alt="logo" class="logo" src="./assets/electron.svg" />
   <div class="creator">Powered by electron-vite</div>
   <div class="text">
     Build an Electron app with
@@ -36,5 +44,11 @@ window.api.OnMessageAlerts((value) => {
       <a target="_blank" rel="noreferrer" @click="ipcB">Test</a>
     </div>
   </div>
-  <Versions />
+  <Versions /> -->
 </template>
+<style lang="css">
+.home {
+  height: 100vh;
+  width: 100vw;
+}
+</style>

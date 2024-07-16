@@ -1,62 +1,67 @@
 {
-  "$schema": "../pipeline.schema.json",
   "Task1": {},
-  "StartUp": {
-    "next": ["In_App", "Sub_StartUp"]
+  "StartUp_MYS": {
+    "next": ["In_App_MYS", "Sub_StartUp_MYS"]
   },
-  "Sub_StartUp": {
+  "Sub_StartUp_MYS": {
     "is_sub": true,
-    "next": ["In_App", "Sub_Start_miYouShe"]
+    "next": ["In_App_MYS", "Sub_Start_MYS"]
   },
-  "Sub_Start_miYouShe": {
+  "Sub_Start_MYS": {
     "is_sub": true,
     "action": "StartApp",
     "package": "com.mihoyo.hyperion/.splash.SplashActivity",
     "post_delay": 3000
   },
-  "Get_ZZZ1": {
-    "next": ["Official_Page", "ZZZ", "Reward", "Register_Title", "Getting_Reward"]
+  "Get_ZZZ1_MYS": {
+    "next": [
+      "Official_Page_MYS",
+      "ZZZ_MYS",
+      "Reward_MYS",
+      "Register_Title_MYS",
+      "Getting_Reward_MYS"
+    ]
   },
-  "In_App": {
+  "In_App_MYS": {
     "recognition": "TemplateMatch",
     "template": "Reg/In_App.png",
     "roi": [0, 1200, 720, 80]
   },
-  "Official_Page": {
+  "Official_Page_MYS": {
     "recognition": "TemplateMatch",
-    "next": ["ZZZ", "Reward", "Register_Title", "Getting_Reward"],
+    "next": ["ZZZ_MYS", "Reward_MYS", "Register_Title_MYS", "Getting_Reward_MYS"],
     "template": "Reg/Official_Page.png",
     "roi": [0, 1200, 720, 80]
   },
-  "ZZZ": {
+  "ZZZ_MYS": {
     "recognition": "OCR",
     "expected": ["绝区零"],
     "action": "Click",
-    "next": ["Reward", "Register_Title", "Getting_Reward"],
+    "next": ["Reward_MYS", "Register_Title_MYS", "Getting_Reward_MYS"],
     "roi": [0, 50, 500, 50],
     "post_wait_freezes": 1000
   },
-  "Reward": {
+  "Reward_MYS": {
     "recognition": "TemplateMatch",
     "template": "Reg/Reward.png",
-    "next": ["Register_Title", "Getting_Reward"],
+    "next": ["Register_Title_MYS", "Getting_Reward_MYS"],
     "action": "Click",
     "roi": [48, 200, 90, 45]
   },
-  "Register_Title": {
-    "next": ["Getting_Reward"],
+  "Register_Title_MYS": {
+    "next": ["Getting_Reward_MYS"],
     "recognition": "TemplateMatch",
     "template": "Reg/Register_Title.png",
     "post_wait_freezes": 1000
   },
-  "Getting_Reward": {
+  "Getting_Reward_MYS": {
     "recognition": "TemplateMatch",
     "template": "Reg/Getting_Reward.png",
     "roi": [45, 465, 620, 410],
     "action": "Click",
     "target_offset": [-20, 30, 50, 50]
   },
-  "StopApp": {
+  "StopApp_MYS": {
     "action": "StopApp",
     "package": "com.mihoyo.hyperion"
   }
