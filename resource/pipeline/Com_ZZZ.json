@@ -1,0 +1,35 @@
+{
+  "$schema": "../pipeline.schema.json",
+  "Join_Map_ZZZ": {
+    "is_sub": true,
+    "recognition": "FeatureMatch",
+    "action": "Click",
+    "template": "ZZZ/Com/zzz_map.png",
+    "roi": [1096, 399, 56, 40]
+  },
+  "Switch_Map_ZZZ": {
+    "is_sub": true,
+    "recognition": "DirectHit",
+    "action": "Click",
+    "roi": [921, 250, 69, 69]
+  },
+  "Six_Street_ZZZ": {
+    "is_sub": true,
+    "recognition": "TemplateMatch",
+    "template": "ZZZ/Com/zzz_six_street",
+    "roi": [536, 243, 204, 71]
+  },
+  "SS_Newsstand_ZZZ": {
+    "is_sub": true,
+    "action": "Click",
+    "recognition": "TemplateMatch",
+    "template": "ZZZ/Com/zzz_ss_newsstand.png",
+    "roi": [9, 580, 1255, 87]
+  },
+  "Click_Go_ZZZ": {
+    "action": "Click",
+    "recognition": "TemplateMatch",
+    "template": "ZZZ/Com/zzz_map_go.png",
+    "roi": [661, 418, 154, 31]
+  }
+}

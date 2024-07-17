@@ -26,14 +26,13 @@
     "is_sub": true,
     "recognition": "TemplateMatch",
     "template": "ZZZ/StartUp/zzz_add.png",
-    "roi": [1140, 40, 90, 120],
-    "target_offset": [-200, 200, 20, 20]
+    "roi": [1140, 40, 90, 120]
   },
   "Sub_Launcher_ZZZ": {
     "is_sub": true,
     "action": "StartApp",
     "package": "com.miHoYo.Nap/com.mihoyo.combosdk.ComboSDKActivity",
-    "post_delay": 2000
+    "post_delay": 4000
   },
   "Sub_Res_Download": {
     "is_sub": true,
@@ -45,7 +44,8 @@
       ".*进入游戏.*",
       ".*正在编译着色器.*"
     ],
-    "roi": [515, 570, 35, 210]
+    "roi": [490, 570, 210, 35],
+    "post_wait_freezes": 2
   },
   "Sub_Res_Updata_Click": {
     "is_sub": true,
