@@ -39,6 +39,7 @@
               <NCheckbox v-model:checked="register3zMYS" label="刮刮券"></NCheckbox>
               <NCheckbox v-model:checked="stopAppMYS" label="退出ZZZ"></NCheckbox>
               <NButton @click="zzzStart">zzz启动</NButton>
+              <NButton @click="zzzGua">刮刮卡</NButton>
             </NFlex>
           </NCard>
           <!--#regionend-->
@@ -94,6 +95,10 @@ const initMaaFw = () => window.electron.ipcRenderer.send('initMaaFw')
 const zzzStart = () =>
   window.electron.ipcRenderer
     .invoke('test', JSON.stringify({ type: 'startzzz' }))
+    .then((res) => console.log(res))
+const zzzGua = () =>
+  window.electron.ipcRenderer
+    .invoke('test', JSON.stringify({ type: 'zzzgua' }))
     .then((res) => console.log(res))
 const { startUpMYS, register3zMYS, stopAppMYS, executeMYS, dutyMYS } = useMiYouShe()
 onMounted(() => {

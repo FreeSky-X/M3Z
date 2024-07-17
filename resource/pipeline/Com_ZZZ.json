@@ -1,5 +1,10 @@
 {
   "$schema": "../pipeline.schema.json",
+  "In_Map_ZZZ": {
+    "recognition": "TemplateMatch",
+    "template": "ZZZ/Com/zzz_in_map.png",
+    "roi": [160, 25, 132, 36]
+  },
   "Join_Map_ZZZ": {
     "is_sub": true,
     "recognition": "FeatureMatch",
@@ -10,13 +15,15 @@
   "Switch_Map_ZZZ": {
     "is_sub": true,
     "recognition": "DirectHit",
-    "action": "Click",
-    "roi": [921, 250, 69, 69]
+    "action": "Swipe",
+    "begin": [920, 240, 30, 30],
+    "end": [640, 240, 20, 20],
+    "duration": 500
   },
   "Six_Street_ZZZ": {
     "is_sub": true,
     "recognition": "TemplateMatch",
-    "template": "ZZZ/Com/zzz_six_street",
+    "template": "ZZZ/Com/zzz_six_street.png",
     "roi": [536, 243, 204, 71]
   },
   "SS_Newsstand_ZZZ": {

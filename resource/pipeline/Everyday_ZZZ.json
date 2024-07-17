@@ -1,6 +1,9 @@
 {
   "$schema": "../pipeline.schema.json",
   "Go_Lottery_Scratchcard_ZZZ": {
-    "next": ["Click_Go_ZZZ", "SS_Newsstand_ZZZ", "Six_Street_ZZZ", "Switch_Map_ZZZ", "Join_Map_ZZZ"]
+    "next": ["In_Map_ZZZ", "Join_Map_ZZZ"]
+  },
+  "LS_ZZZ": {
+    "next": ["Click_Go_ZZZ", "SS_Newsstand_ZZZ", "Six_Street_ZZZ", "Switch_Map_ZZZ"]
   }
 }
