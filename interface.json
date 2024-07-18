@@ -1,0 +1,21 @@
+{
+  "controller": [
+    {
+      "name": "安卓端",
+      "type": "Adb"
+    }
+  ],
+  "resource": [
+    {
+      "name": "Official",
+      "path": ["{PROJECT_DIR}/resource"]
+    }
+  ],
+  "task": [
+    { "name": "进地图", "entry": "Go_Lottery_Scratchcard_ZZZ" },
+    {
+      "name": "6S报刊亭",
+      "entry": "LS_ZZZ"
+    }
+  ]
+}

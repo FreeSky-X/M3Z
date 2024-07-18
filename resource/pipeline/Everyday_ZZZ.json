@@ -5,5 +5,36 @@
   },
   "LS_ZZZ": {
     "next": ["Click_Go_ZZZ", "SS_Newsstand_ZZZ", "Six_Street_ZZZ", "Switch_Map_ZZZ"]
-  }
+  },
+  "Advance_ZZZ": {
+    "is_sub": true,
+    "action": "Swipe",
+    "begin": [223, 538, 29, 23],
+    "end": [223, 508, 29, 23],
+    "duration": 300,
+    "next": ["Interaction_Key_ZZZ"]
+  },
+  "Interaction_Key_ZZZ": {
+    "is_sub": true,
+    "action": "Click",
+    "recognition": "FeatureMatch",
+    "template": "ZZZ/Com/zzz_interaction_key.png",
+    "roi": [1001, 568, 58, 46]
+  },
+  "In_Lottery_Scratchcard_ZZZ": {
+    "recognition": "TemplateMatch",
+    "template": "",
+    "roi": [0, 0, 0, 0],
+    "next": ["Already_Lottery_Scratchcard_ZZZ", "Not_Lottery_Scratchcard_ZZZ"]
+  },
+  "Lottery_Scratchcard_ZZZ": {
+    "next": ["In_Lottery_Scratchcard_ZZZ", "Interaction_Key_ZZZ"]
+  },
+  "Click_Lottery_Scratchcard_ZZZ": {},
+  "Not_Lottery_Scratchcard_ZZZ": {},
+  "Already_Lottery_Scratchcard_ZZZ": {
+    "next": ["Back_Six_Street_ZZZ"]
+  },
+  "Back_Six_Street_ZZZ": {},
+  "Act_Lottery_Scratchcard_ZZZ": {}
 }
