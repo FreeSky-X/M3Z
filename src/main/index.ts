@@ -109,7 +109,7 @@ app.whenReady().then(async () => {
         mainWindowMessage(`start ${taskName}`)
         // const b = await Instance.post_task('Go_Lottery_Scratchcard_ZZZ').wait()
         // const c = await Instance.post_task('LS_ZZZ').wait()
-        const d = await Instance.post_task('Advance_ZZZ').wait()
+        const d = await Instance.post_task('Lottery_Scratchcard_ZZZ').wait()
         console.log(d)
         if (d == 3000) {
           mainWindowMessage(`Completed: ${taskName}`)

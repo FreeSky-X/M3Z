@@ -15,26 +15,54 @@
     "next": ["Interaction_Key_ZZZ"]
   },
   "Interaction_Key_ZZZ": {
-    "is_sub": true,
     "action": "Click",
     "recognition": "FeatureMatch",
     "template": "ZZZ/Com/zzz_interaction_key.png",
     "roi": [1001, 568, 58, 46]
   },
   "In_Lottery_Scratchcard_ZZZ": {
-    "recognition": "TemplateMatch",
-    "template": "",
-    "roi": [0, 0, 0, 0],
-    "next": ["Already_Lottery_Scratchcard_ZZZ", "Not_Lottery_Scratchcard_ZZZ"]
+    "recognition": "FeatureMatch",
+    "template": "ZZZ/Com/zzz_in_l_s.png",
+    "roi": [1200, 610, 90, 60],
+    "next": ["Not_Lottery_Scratchcard_ZZZ"]
   },
   "Lottery_Scratchcard_ZZZ": {
-    "next": ["In_Lottery_Scratchcard_ZZZ", "Interaction_Key_ZZZ"]
+    "next": ["In_Lottery_Scratchcard_ZZZ", "Advance_ZZZ"]
   },
   "Click_Lottery_Scratchcard_ZZZ": {},
-  "Not_Lottery_Scratchcard_ZZZ": {},
+  "Not_Lottery_Scratchcard_ZZZ": {
+    "recognition": "FeatureMatch",
+    "action": "Click",
+    "template": "ZZZ/Com/zzz_not_l_s.png",
+    "roi": [81, 661, 22, 31],
+    "target_offset": [0, -20, 0, 0],
+    "next": ["Act_Lottery_Scratchcard1_ZZZ"]
+  },
   "Already_Lottery_Scratchcard_ZZZ": {
     "next": ["Back_Six_Street_ZZZ"]
   },
   "Back_Six_Street_ZZZ": {},
-  "Act_Lottery_Scratchcard_ZZZ": {}
+  "Act_Lottery_Scratchcard1_ZZZ": {
+    "action": "Swipe",
+    "begin": [795, 341, 20, 20],
+    "end": [470, 341, 20, 20],
+    "next": ["Act_Lottery_Scratchcard2_ZZZ"]
+  },
+  "Act_Lottery_Scratchcard2_ZZZ": {
+    "action": "Swipe",
+    "begin": [795, 361, 20, 20],
+    "end": [470, 361, 20, 20],
+    "next": ["Act_Lottery_Scratchcard3_ZZZ"]
+  },
+  "Act_Lottery_Scratchcard3_ZZZ": {
+    "action": "Swipe",
+    "begin": [795, 381, 20, 20],
+    "end": [470, 381, 20, 20],
+    "next": ["Act_Lottery_Scratchcard4_ZZZ"]
+  },
+  "Act_Lottery_Scratchcard4_ZZZ": {
+    "action": "Swipe",
+    "begin": [795, 401, 20, 20],
+    "end": [470, 401, 20, 20]
+  }
 }
