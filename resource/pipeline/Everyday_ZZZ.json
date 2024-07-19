@@ -22,9 +22,10 @@
   },
   "In_Lottery_Scratchcard_ZZZ": {
     "recognition": "FeatureMatch",
-    "template": "ZZZ/Com/zzz_in_l_s.png",
-    "roi": [1200, 610, 90, 60],
-    "next": ["Not_Lottery_Scratchcard_ZZZ"]
+    "template": "ZZZ/Com/zzz_not_l_s.png",
+    "roi": [81, 661, 22, 31],
+    "next": ["Not_Lottery_Scratchcard_ZZZ"],
+    "pre_wait_freezes": 200
   },
   "Lottery_Scratchcard_ZZZ": {
     "next": ["In_Lottery_Scratchcard_ZZZ", "Advance_ZZZ"]
@@ -45,24 +46,24 @@
   "Act_Lottery_Scratchcard1_ZZZ": {
     "action": "Swipe",
     "begin": [795, 341, 20, 20],
-    "end": [470, 341, 20, 20],
+    "end": [450, 341, 20, 20],
     "next": ["Act_Lottery_Scratchcard2_ZZZ"]
   },
   "Act_Lottery_Scratchcard2_ZZZ": {
     "action": "Swipe",
     "begin": [795, 361, 20, 20],
-    "end": [470, 361, 20, 20],
+    "end": [450, 361, 20, 20],
     "next": ["Act_Lottery_Scratchcard3_ZZZ"]
   },
   "Act_Lottery_Scratchcard3_ZZZ": {
     "action": "Swipe",
     "begin": [795, 381, 20, 20],
-    "end": [470, 381, 20, 20],
+    "end": [450, 381, 20, 20],
     "next": ["Act_Lottery_Scratchcard4_ZZZ"]
   },
   "Act_Lottery_Scratchcard4_ZZZ": {
     "action": "Swipe",
     "begin": [795, 401, 20, 20],
-    "end": [470, 401, 20, 20]
+    "end": [450, 401, 20, 20]
   }
 }
